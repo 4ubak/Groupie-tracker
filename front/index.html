@@ -3,14 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <title>Groupie-trackers</title>
-    <!-- <link rel="stylesheet" type="text/css" href="/style/style.css"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Noto+Serif+JP&display=swap" rel="stylesheet"> -->
+    <style>
+        h2 {
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+        }
+        body {
+            background-color: #ec7344;
+        }
+        .section-title {
+            padding: 20px 0;
+            background-color: #e64f35;
+            border-radius: 20px;
+        }
+        .section-search {
+            display: flex;
+            justify-content: center;
+            padding: 30px 0 10px 0;
+            
+        }
+        .section-search input{
+            width: 300px;
+            height: 40px;
+
+        }
+        .artist-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            margin: 20px;
+            width: calc(25% - 40px);
+            background: #fff;
+            padding: 15px 25px 35px;
+            color: #f78585;
+        
+            box-sizing: border-box;
+            text-align: center;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .titletext {
+            font-style: oblique;
+            font-weight: bold;
+        }
+        .modal .titletext {
+            font-size: 20px;
+        }
+        .card.modal {
+            display: flex;
+            align-items: stretch;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            overflow: auto;
+        }
+        .card img {
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        .modal img {
+            width: 30%;
+            height: 60%;
+            flex-grow: 1;
+        }
+        .card .hiddentext {
+            display: none;
+        }
+        .modal .hiddentext{
+            display: block;
+            font-size: 18px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .name {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .modal .name {
+            font-size: 25px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .relation {
+            font-size: 16px;
+            font-family: 'Noto Serif JP', serif;
+            text-align: left;
+            white-space: pre-wrap;
+            height: 200px;
+            overflow: auto;
+            text-transform: capitalize;
+        }
+
+        .modal .relation {
+            height: 500px;
+            font-size: 18px;
+            padding: 20px 20px 20px 0;
+            text-align: center;
+            flex-grow: 2;
+        }
+
+        @media only screen and (max-width: 1300px) {
+            .card {
+                height: auto;
+                width: 100%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Noto+Serif+JP&display=swap" rel="stylesheet">
 </head>
 <body>
     <section class="section-title" >
-        <h2>The Artists and Relations API Golang</h2>
+        <h2>GROUPIE-TRACKER by 4ubak</h2>
     </section>
-    <section class="section-search">
+    <!-- <section class="section-search">
         <form action="/" method="POST">
             <input name='datastring' list="datalist" placeholder="Type...">
             <datalist id="datalist">
@@ -34,7 +151,7 @@
             </datalist>
             <button>search</button>
         </form>
-    </section>
+    </section> -->
     <section class="section-cards">
         <div class="artist-container">
             {{range . }}
