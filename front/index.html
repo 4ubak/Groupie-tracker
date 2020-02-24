@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Groupie-trackers</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/style/style.css"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Noto+Serif+JP&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+    <section class="section-title" >
+        <h2>The Artists and Relations API Golang</h2>
+    </section>
+    <section class="section-search">
+        <form action="/" method="POST">
+            <input name='datastring' list="datalist" placeholder="Type...">
+            <datalist id="datalist">
+                {{range . }}
+                    <option value="{{.Name}}">{{.Name}} - Artist</option>
+                {{end}}
+                {{range . }}
+                    {{range .Members}}                  
+                        <option value="{{.}}">{{.}} - Member</option>
+                    {{end}}
+                {{end}}
+                {{range . }}
+                <option value="{{.Name}}">{{.Locations}} - Location</option>
+                {{end}}
+                {{range . }}
+                <option value="{{.Name}}">{{.FirstAlbum}} - First Album</option>
+                {{end}}
+                {{range . }}
+                <option value="{{.Name}}">{{.CreationDate}} - Creation Date</option>
+                {{end}}
+            </datalist>
+            <button>search</button>
+        </form>
+    </section>
+    <section class="section-cards">
+        <div class="artist-container">
+            {{range . }}
+            <div class="card">
+                <img src="{{.Image}}" alt="{{.Name}}">
+                <div class="name">{{.Name}}<br></div>
+                <div class="hiddentext">
+                    <div class="titletext">Members:<br></div>
+                    {{range .Members}}                  
+                    <div class="members"> {{.}}</div>
+                    {{end}}
+                    <div class="titletext"><br>Creation Date:</div>
+                    <div class="creation-date">{{.CreationDate}}</div>
+                    <div class="titletext"><br>First Album:</div>
+                    <div class="first-album">{{.FirstAlbum}}</div>
+                </div>
+                <div class="titletext"><br>Dates and Locations:</div>
+                <div class="relation">{{.Relations}}</div>
+            </div>
+            {{end}}
+        </div>
+    </section> 
+</body>
+</html>
+<script>
+    let cards = document.getElementsByClassName('card') 
+    for (let item of cards) {
+        item.onclick = function () {
+            item.classList.toggle("modal")
+        }
+    };
+</script>
